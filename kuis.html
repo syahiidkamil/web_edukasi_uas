@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <title>Kuis - SUKAEMAS</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .correct {
+        color: green;
+      }
+      .incorrect {
+        color: red;
+      }
+      #score {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body class="bg-dark text-white">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">SUKAEMAS</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="beranda.html"
+                >Beranda</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="panduan.html">Panduan Karir</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="singularitas.html">Singularitas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="kuis.html">Kuis</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="lab_koding.html">Lab Koding</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <h1 class="text-center mt-5">Kuis Singularitas dan Karir IT</h1>
+
+      <form id="quiz" class="container py-5">
+        <div>
+          <p class="my-3 fs-5">
+            1. Apa Istilah yang merujuk pada titik di masa depan dimana kemajuan
+            teknologi akan begitu cepat dan dalam hingga akhirnya menciptakan
+            perubahan imensif dalam masyarakat manusia?
+          </p>
+          <input type="radio" id="q1a" name="q1" value="a" />
+          <label for="q1a">a. Era Informatika</label><br />
+          <input type="radio" id="q1b" name="q1" value="b" />
+          <label for="q1b">b. Singularitas Teknologi</label><br />
+          <input type="radio" id="q1c" name="q1" value="c" />
+          <label for="q1c">c. Transhumanisme</label><br />
+          <input type="radio" id="q1d" name="q1" value="d" />
+          <label for="q1d">d. Informasi Overload</label><br />
+        </div>
+
+        <div>
+          <p class="my-3 fs-5">
+            2. Kemampuan apa yang diperlukan dalam Karir Teknologi Informasi?
+          </p>
+          <input type="radio" id="q2a" name="q2" value="a" />
+          <label for="q1a">a. Pemrograman dan desain</label><br />
+          <input type="radio" id="q2b" name="q2" value="b" />
+          <label for="q2b">b. Analisis data dan keamanan siber</label><br />
+          <input type="radio" id="q2c" name="q2" value="c" />
+          <label for="q2c">c. Semua yang disebutkan diatas</label><br />
+          <input type="radio" id="q2d" name="q2" value="d" />
+          <label for="q2d">d. Hanya pemahaman tentang teknologi</label><br />
+        </div>
+
+        <div>
+          <p class="my-3 fs-5">
+            3. Apa profesi yang berfokus untuk memastikan keamanan dan
+            integritas sistem dan jaringan?
+          </p>
+          <input type="radio" id="q3a" name="q3" value="a" />
+          <label for="q3a">a. Spesialis Basis Data</label><br />
+          <input type="radio" id="q3b" name="q3" value="b" />
+          <label for="q3b">b. Ahli Statistik</label><br />
+          <input type="radio" id="q3c" name="q3" value="c" />
+          <label for="q3c">c. Administrator Jaringan</label><br />
+          <input type="radio" id="q3d" name="q3" value="d" />
+          <label for="q3d">d. Analis Keamanan</label><br />
+        </div>
+
+        <button class="btn btn-primary mt-4" type="button" onclick="results()">
+          Kirim Jawaban
+        </button>
+      </form>
+
+      <p id="score"></p>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-white py-4">
+      <div class="container text-center">
+        &copy; 2023 SUKAEMAS Kelompok 11. Semua hak cipta dilindungi.
+      </div>
+    </footer>
+
+    <script>
+      let total = 0;
+
+      function results() {
+        let score = 0;
+
+        if (document.getElementById("q1b").checked) score++;
+        if (document.getElementById("q2c").checked) score++;
+        if (document.getElementById("q3d").checked) score++;
+
+        document.getElementById("score").innerHTML =
+          score + " benar dari 3 pertanyaan!";
+        document.getElementById("score").style.display = "block";
+      }
+    </script>
+
+    <script src="assets/js/bootstrap.js"></script>
+  </body>
+</html>
