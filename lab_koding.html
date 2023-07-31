@@ -55,26 +55,90 @@
     </nav>
 
     <main class="container">
-      <h1 class="text-center mt-5">Lab Koding - HTML Playground</h1>
+      <h1 class="text-center mt-5">Lab Koding - Interactive HTML Playground</h1>
+      <hr />
 
-      <div class="row py-4 justify-content-between">
+      <div class="row justify-content-around">
         <!-- Text Area to input html code -->
-        <div class="col-md-5 bg-secondary p-3">
+        <div class="col-md-5 bg-light text-dark p-3 rounded border">
           <h3 class="text-center mb-3">Masukkan kode HTML Anda</h3>
-          <textarea
-            class="form-control rounded"
-            id="editor"
-            rows="15"
-          ></textarea>
-          <button class="btn btn-primary mt-3 w-100" id="submitCode">
-            Submit
-          </button>
+
+          <!-- Using Form Element for better understanding -->
+          <form>
+            <label for="editor" class="form-label">HTML Code</label>
+            <textarea
+              class="form-control"
+              id="editor"
+              rows="10"
+              placeholder="Masukkan kode HTML di sini..."
+            ></textarea>
+
+            <!-- Select tag to choose code presets for quick learning/testing -->
+            <label for="preset" class="form-label mt-3">Pilih Kodemu</label>
+            <select class="form-select" id="preset">
+              <option selected>Pilih Kode Hadiah</option>
+              <option value="1">Styling HTML menggunakan CSS</option>
+              <option value="2">Form handling menggunakan JS</option>
+              <!-- More options for presets -->
+            </select>
+
+            <button
+              type="button"
+              class="btn btn-primary mt-3 w-100"
+              id="submitCode"
+            >
+              Lihat Output
+            </button>
+          </form>
         </div>
 
         <!-- Output Screen -->
-        <div class="col-md-5 bg-secondary">
+        <div class="col-md-5 bg-light text-dark p-3 rounded border">
           <h3 class="text-center py-3">Output</h3>
-          <iframe id="preview" class="w-100"></iframe>
+          <iframe id="preview" class="w-100 h-100"></iframe>
+        </div>
+      </div>
+
+      <hr />
+
+      <!-- Some additional Study Material. It can be made hidden and shown on button click using JavaScript -->
+      <div class="row justify-content-around my-5">
+        <div class="col-md-5">
+          <h2>Panduan Belajar:</h2>
+          <ul>
+            <li>
+              <a href="https://www.petanikode.com/tutorial/html/"
+                >Panduan pemula HTML</a
+              >
+            </li>
+            <li>
+              <a href="https://www.petanikode.com/css-untuk-pemula/"
+                >Panduan pemula CSS</a
+              >
+            </li>
+            <li>
+              <a href="https://www.petanikode.com/tutorial/javascript/"
+                >Panduan pemula JavaScript</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-md-5">
+          <h2>Video Tutorial:</h2>
+          <!-- <video controls> -->
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/t8Nxs7F4qEM"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+          <!-- Browser anda tidak mendukung tag video. -->
+          <!-- </video> -->
+          <p>Judul video: Pengantar Pemrograman Web</p>
         </div>
       </div>
     </main>
@@ -93,6 +157,30 @@
         var iframe = document.getElementById("preview");
         iframe.src = "data:text/html;charset=utf-8," + encodeURI(code);
       });
+    </script>
+    <script>
+      const codeEditor = document.getElementById("editor");
+
+      const presets = {
+        1: "<!DOCTYPE html>\n<html>\n<head>\n<title>Web Page with CSS</title>\n<style>\nbody {background-color: powderblue;}\nh1   {color: blue;}\np    {color: red;}\n</style>\n</head>\n<body>\n\n<h1>Hello World!</h1>\n<p>Welcome to HTML and CSS</p>\n\n</body>\n</html>\n",
+
+        2: '<!DOCTYPE html>\n<html>\n<body>\n\n<h2>My First JavaScript</h2>\n\n<button type="button"\nonclick="document.getElementById(\'demo\').innerHTML = Date()">\nClick me to display Date and Time.</button>\n\n<p id="demo"></p>\n\n</body>\n</html>\n',
+      };
+
+      // fill editor with preset code when a preset is chosen
+      document.getElementById("preset").addEventListener("change", function () {
+        const selectedPresetValue = this.value;
+        codeEditor.value = presets[selectedPresetValue] || "";
+      });
+
+      // When submit code is clicked
+      document
+        .getElementById("submitCode")
+        .addEventListener("click", function () {
+          var code = document.getElementById("editor").value;
+          var iframe = document.getElementById("preview");
+          iframe.src = "data:text/html;charset=utf-8," + encodeURI(code);
+        });
     </script>
 
     <script src="assets/js/bootstrap.js"></script>
