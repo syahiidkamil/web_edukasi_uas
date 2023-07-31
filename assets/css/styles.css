@@ -1,0 +1,10 @@
+.back-to-top {
+  position: fixed;
+  bottom: 25px; /* adjust the distance from bottom as per your needs */
+  right: 25px; /* adjust the distance from the right side of screen as per your needs */
+  background-color: dimgray;
+  color: #fff; /* change color as needed */
+  padding: 10px 20px; /* adjust padding as per your needs */
+  border-radius: 50px; /* to make button circular */
+  width: auto;
+}

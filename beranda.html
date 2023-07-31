@@ -8,7 +8,7 @@
     <title>SUKAEMAS</title>
   </head>
   <body class="bg-dark text-white">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
         <a class="navbar-brand" href="#">SUKAEMAS</a>
         <button
@@ -30,10 +30,10 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="panduan.html">Panduan Karir</a>
+              <a class="nav-link" href="singularitas.html">Singularitas</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="singularitas.html">Singularitas</a>
+              <a class="nav-link" href="panduan.html">Panduan Karir</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="kuis.html">Kuis</a>
@@ -143,6 +143,22 @@
       <!-- Remaining Sections -->
       <section class="container my-4">
         <div class="row row-cols-1 row-cols-md-2 g-4">
+          <!-- Singularitas -->
+          <div class="col">
+            <div class="card bg-secondary">
+              <div class="card-body text-center">
+                <h5 class="card-title">Singularitas</h5>
+                <p class="card-text">
+                  Masa depan adalah Singularitas. Apa itu Singularitas dan
+                  bagaimana ini akan membentuk industri IT? Pelajari lebih
+                  lanjut di sini.
+                </p>
+                <br />
+                <a href="#" class="btn btn-primary">Pelajari lebih lanjut</a>
+              </div>
+            </div>
+          </div>
+
           <!-- Panduan Karir -->
           <div class="col">
             <div class="card bg-secondary">
@@ -157,22 +173,6 @@
                 <a href="panduan.html" class="btn btn-primary"
                   >Pelajari lebih lanjut</a
                 >
-              </div>
-            </div>
-          </div>
-
-          <!-- Singularitas -->
-          <div class="col">
-            <div class="card bg-secondary">
-              <div class="card-body text-center">
-                <h5 class="card-title">Singularitas</h5>
-                <p class="card-text">
-                  Masa depan adalah Singularitas. Apa itu Singularitas dan
-                  bagaimana ini akan membentuk industri IT? Pelajari lebih
-                  lanjut di sini.
-                </p>
-                <br />
-                <a href="#" class="btn btn-primary">Pelajari lebih lanjut</a>
               </div>
             </div>
           </div>
@@ -247,6 +247,9 @@
         </div>
       </section>
     </main>
+    <a id="back-to-top" href="#" class="back-to-top btn btn-lg" role="button"
+      ><i class="fas fa-chevron-up"></i> Kembali ke atas</a
+    >
 
     <footer class="bg-secondary text-white py-4">
       <div class="container text-center">
@@ -254,6 +257,27 @@
       </div>
     </footer>
 
-    <script src="assets/js/bootstrap.js"></script>
+    <script src="assets/js/bootstrap.js">
+      $(document).ready(function(){
+            $(window).scroll(function () {
+                       if ($(this).scrollTop() > 50) {
+                           $('#back-to-top').fadeIn();
+                       } else {
+                           $('#back-to-top').fadeOut();
+                       }
+                   });
+                   // scroll body to 0px on click
+                   $('#back-to-top').click(function () {
+                       $('#back-to-top').tooltip('hide');
+                       $('body,html').animate({
+                           scrollTop: 0
+                       }, 800);
+                       return false;
+                   });
+
+                   $('#back-to-top').tooltip('show');
+
+           });
+    </script>
   </body>
 </html>
