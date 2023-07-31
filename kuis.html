@@ -64,6 +64,12 @@
 
     <main>
       <h1 class="text-center mt-5">Kuis Singularitas dan Karir IT</h1>
+      <aside class="text-center mt-5">
+        <p>
+          Catatan: Harap cermati tiap pertanyaan dan jawaban yang diberikan.
+          Tetap semangat wujudkan karir cemerlang di era singularitas!
+        </p>
+      </aside>
 
       <form id="quiz" class="container py-5">
         <div>
@@ -116,7 +122,13 @@
         </button>
       </form>
 
-      <p id="score"></p>
+      <div id="popup">
+        <h2>Your Score:</h2>
+        <p id="score"></p>
+        <p id="score2">kontol</p>
+        <h2>Your Score:</h2>
+        <button class="btn btn-light" onClick="hidePopup()">Close</button>
+      </div>
     </main>
 
     <!-- Footer -->
@@ -127,18 +139,51 @@
     </footer>
 
     <script>
-      let total = 0;
-
       function results() {
         let score = 0;
+
+        let q1_checked = document.querySelectorAll(
+          'input[name="q1"]:checked'
+        ).length;
+        let q2_checked = document.querySelectorAll(
+          'input[name="q2"]:checked'
+        ).length;
+        let q3_checked = document.querySelectorAll(
+          'input[name="q3"]:checked'
+        ).length;
+
+        if (q1_checked == 0 || q2_checked == 0 || q3_checked == 0) {
+          alert("Mohon jawab semua pertanyaan terlebih dahulu!");
+          return false;
+        }
 
         if (document.getElementById("q1b").checked) score++;
         if (document.getElementById("q2c").checked) score++;
         if (document.getElementById("q3d").checked) score++;
 
-        document.getElementById("score").innerHTML =
-          score + " benar dari 3 pertanyaan!";
-        document.getElementById("score").style.display = "block";
+        document.getElementById("popup").innerHTML =
+          "<h2>Your Score:</h2><p>" +
+          score +
+          ' out of 3 correct!</p><button class="btn btn-light" onClick="hidePopup()">Close</button>';
+
+        showPopup();
+      }
+
+      function showPopup() {
+        let popup_element = document.getElementById("popup");
+        popup_element.style.display = "block";
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+
+      function hidePopup() {
+        document.getElementById("popup").style.display = "none";
+        window.scrollTo({
+          top: document.body.scrollHeight,
+          behavior: "smooth",
+        });
       }
     </script>
 
